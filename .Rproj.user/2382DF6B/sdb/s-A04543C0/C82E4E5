@@ -1,0 +1,16 @@
+{
+    "contents" : "##creates a \"special matrix\" and a list\n\nmakeCacheMatrix <- function(x = matrix()) {\n        value <- NULL\n        set <- function(y) {\n                x <<- y\n                value <<- NULL\n        }\n        get <- function() x\n        setInverse <- function(solve) value <<- solve\n        getInverse <- function() value\n        list(set = set, get = get,\n             setInverse = setInverse,\n             getInverse = getInverse)\n}\n\n## Bizzaro (Inverse) matrix. If already there, returns cached version.\n\ncacheSolve <- function(x, ...) {\n        ## Return inverse of x\n        value <- x$getInverse()\n        if(!is.null(value)) {\n                message(\"Getting data\")\n                return(value)\n        }\n        data <- x$get()\n        value <- solve(data, ...)\n        x$setInverse(value)\n        value\n}\n",
+    "created" : 1398438257409.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2811518599",
+    "id" : "C82E4E5",
+    "lastKnownWriteTime" : 1398631343,
+    "path" : "~/GitHub/ProgrammingAssignment2/cachematrix.R",
+    "project_path" : "cachematrix.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
